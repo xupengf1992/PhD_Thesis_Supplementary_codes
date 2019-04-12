@@ -1,0 +1,85 @@
+groupscope("::model");
+efficiency = 0.943;  
+#       1    2      3     4     5    6     7      8    9    10    11   12   13 
+gene = [0,0.019,0.016,0.002,-0.012,-0.014,-0.028,-0.025,-0.028,0.003,0.015,0.02,0.077]*1e-6;
+gene2 =[0.102,0.386,0.681,1.005,1.384,1.718,2.110,2.311,0.095]*1e-6;
+gene= [gene,gene2];
+
+flag = true;
+for(0;flag==true;0) {
+flag = false; 
+############################################################
+for(iii = 2:22){
+# actually they are y value
+#       1  2   3   4   5   6   7   8   9  10  11  12   13
+genetemp = gene;
+temp = genetemp(iii);
+for (temp2 = temp-1e-9:2e-9:temp+1e-9){
+genetemp(iii) = temp2;
+xold = [0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.3]*1e-6;
+xnew=linspace(0,2.3e-6,52);
+ynew=spline(genetemp(1:13),xold,xnew); # smoothing
+xnew=[xnew;2.3e-6;0];
+ynew=[ynew;-0.1e-6;-0.1e-6];
+vertices = [xnew,ynew];
+groupscope("polygons");
+for(num=1:1:8){
+name = "polygon"+num2str(num);
+select(name);
+set("vertices",vertices); 
+}
+groupscope("::model"); 
+
+vert1=[0,0;0,3e-7;genetemp(14),3e-7;genetemp(14),0];
+vert2=[genetemp(14),0;genetemp(14),1e-7;genetemp(14)+1e-7,1e-7;genetemp(14)+1e-7,2e-7;genetemp(14),2e-7;genetemp(14),3e-7;genetemp(15),3e-7;genetemp(15),0];
+vert3=[genetemp(15),0;genetemp(15),1e-7;genetemp(15)+1e-7,1e-7;genetemp(15)+1e-7,2e-7;genetemp(15),2e-7;genetemp(15),3e-7;genetemp(16),3e-7;genetemp(16),0];
+vert4=[genetemp(16),0;genetemp(16),1e-7;genetemp(16)+1e-7,1e-7;genetemp(16)+1e-7,2e-7;genetemp(16),2e-7;genetemp(16),3e-7;genetemp(17),3e-7;genetemp(17),0];
+vert5=[genetemp(17),0;genetemp(17),1e-7;genetemp(17)+1e-7,1e-7;genetemp(17)+1e-7,2e-7;genetemp(17),2e-7;genetemp(17),3e-7;genetemp(18),3e-7;genetemp(18),0];
+vert6=[genetemp(18),0;genetemp(18),1e-7;genetemp(18)+1e-7,1e-7;genetemp(18)+1e-7,2e-7;genetemp(18),2e-7;genetemp(18),3e-7;genetemp(19),3e-7;genetemp(19),0];
+vert7=[genetemp(19),0;genetemp(19),1e-7;genetemp(19)+1e-7,1e-7;genetemp(19)+1e-7,2e-7;genetemp(19),2e-7;genetemp(19),3e-7;genetemp(20)-1e-7,3e-7;genetemp(20)-1e-7,0];
+hh = (1e-7-genetemp(22))/2;
+vert8=[genetemp(20),hh;genetemp(20),1e-7+hh;genetemp(20)-1e-7,1e-7+hh;genetemp(20)-1e-7,2e-7+hh;genetemp(20),2e-7+hh;genetemp(20),3e-7-hh;genetemp(20)-1e-7,3e-7-hh;genetemp(20)-1e-7,3e-7;2.3e-6,3e-7;2.3e-6,0;genetemp(20)-1e-7,0;genetemp(20)-1e-7,hh];
+vert9=[2.3e-6,4e-7;genetemp(21),4e-7+2.3e-6-genetemp(21);genetemp(21),3e-7+2.3e-6-genetemp(21);genetemp(21)+1e-7,3e-7+2.3e-6-genetemp(21);2.55e-6,1.5e-7;2.3e-6,1.5e-7];
+
+for(num=1:1:4){
+name = "arms"+num2str(num);
+groupscope(name); 
+select("polygon1");set("vertices",vert1); 
+select("polygon2");set("vertices",vert2); 
+select("polygon3");set("vertices",vert3); 
+select("polygon4");set("vertices",vert4); 
+select("polygon5");set("vertices",vert5); 
+select("polygon6");set("vertices",vert6); 
+select("polygon7");set("vertices",vert7); 
+select("polygon8");set("vertices",vert8); 
+select("polygon9");set("vertices",vert9); 
+select("polygon10");set("vertices",vert9); 
+
+groupscope("::model"); 
+}
+
+
+run;
+temp =getresult("monitor_1","T");
+effitemp = temp.T; 
+effitemp = sum(effitemp)/5;
+?"iiiii"+(num2str(effitemp)+" "+num2str(efficiency));
+############################# judge ###################### 
+
+switchtolayout;
+if(effitemp>efficiency){
+        flag = true;
+        ?"new gene!!";
+        del("backk.fsp");
+        cp("FDTD1.fsp","backk.fsp");
+        ?effitemp;
+        gene = genetemp;
+        efficiency = effitemp;
+        matlabsave('gene.mat',gene);
+        ?"genesaved!!";
+        }else{
+        genetemp = gene;
+        }
+}        
+}## for root 
+}## while root

@@ -1,0 +1,24 @@
+# checktolerance by xupengf 
+
+
+for(iiiiii=6:2:14){
+
+if(gene(iiiiii)<0.08){
+check = 0;
+}
+
+}
+
+
+for(iiiiii=19:21){
+if(gene(iiiiii)>0.12){
+check = 0;
+}
+}
+
+
+for(iiiiii=22:25){
+if(gene(iiiiii)>0.11){
+check = 0;
+}
+}

@@ -1,0 +1,61 @@
+# final final final 
+
+#efficiency = 0;
+flag=true;
+
+for(0;flag==true;0) {
+
+flag= false;
+
+
+for(iiiii=1:1:25){
+
+
+gene=genesave; 
+## 通过
+gene2=[gene(iiiii)+step(iiiii),gene(iiiii)-step(iiiii)];
+
+for (j=1:2){
+
+gene(iiiii) = gene2(j);
+
+check = 1;
+checktolerance; ## 测试是否通过特征尺寸验证
+
+if(check==1){
+## 通过gene 修改器件结构
+gene2struct;
+
+
+
+groupscope('::model');
+select("source_2");
+updatesourcemode;
+run;
+select("monitor");
+temp =getresult("monitor","T");
+effitemp = abs(temp.T);
+overlapp;
+effitemp = effitemp*overlapppp; 
+switchtolayout;
+if(effitemp>efficiency){
+genesave=gene;
+efficiency= effitemp;
+flag = true;
+?"new gene!!";
+?effitemp;
+matlabsave('check.mat');
+}else{
+gene=genesave;
+}
+
+
+
+} #if check
+
+}
+}
+
+
+
+}

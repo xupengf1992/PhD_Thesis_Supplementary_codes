@@ -1,0 +1,205 @@
+# gene2struct by xupengf
+# 2018年2月9日
+
+
+groupscope('::model');
+select('Siwg');
+set('z span',gene(1)*1e-6);
+select('Siwg2');
+set('z span',gene(1)*1e-6);
+groupscope('1');
+for(i=11:11:55){
+select(num2str(i));
+set('z span',gene(1)*1e-6);
+}
+groupscope('::model');
+groupscope('2');
+for(i=11:11:55){
+select(num2str(i));
+set('z span',gene(1)*1e-6);
+}
+
+
+groupscope('::model');
+select('SiNwg1');
+set('z span',gene(2)*1e-6);
+select('SiNwg2');
+set('z span',gene(2)*1e-6);
+
+select('SiNwg1');
+set('x span',gene(3)*1e-6);
+select('SiNwg2');
+set('x span',gene(3)*1e-6);
+
+select('SiNwg1');
+set('y max',(0.27+gene(4))*1e-6);
+select('SiNwg2');
+set('y min',(0.27+gene(4)+gene(5))*1e-6);
+set('y max',(0.27+gene(4)*2+gene(5))*1e-6);
+
+
+base=-8.3;
+groupscope('::model');
+groupscope('1');
+select('11');
+set('x max',(base)*1e-6);
+base=base-gene(15);
+set('x min',(base)*1e-6);
+
+#select('112'); #
+#set('x max',(base)*1e-6); #
+
+select('22');
+base=base-gene(14);
+set('x max',(base)*1e-6);
+
+#select('112');#
+#set('x min',(base)*1e-6);#
+select('22');#
+
+base=base-gene(13);
+set('x min',(base)*1e-6);
+
+select('33');
+base=base-gene(12);
+set('x max',(base)*1e-6);
+base=base-gene(11);
+set('x min',(base)*1e-6);
+
+select('44');
+base=base-gene(10);
+set('x max',(base)*1e-6);
+base=base-gene(9);
+set('x min',(base)*1e-6);
+
+select('55');
+base=base-gene(8);
+set('x max',(base)*1e-6);
+base=base-gene(7);
+set('x min',(base)*1e-6);
+
+base=base-gene(6);
+groupscope('::model');
+select('Siwg');
+set('x max',(base)*1e-6);
+
+
+
+
+
+base=8.3;
+groupscope('::model');
+groupscope('2');
+select('11');
+set('x min',(base)*1e-6);
+base=base+gene(15);
+set('x max',(base)*1e-6);
+
+#select('112'); #
+#set('x min',(base)*1e-6);#
+
+select('22');
+base=base+gene(14);
+set('x min',(base)*1e-6);
+
+#select('112'); #
+#set('x max',(base)*1e-6);#
+select('22');#
+
+base=base+gene(13);
+set('x max',(base)*1e-6);
+
+select('33');
+base=base+gene(12);
+set('x min',(base)*1e-6);
+base=base+gene(11);
+set('x max',(base)*1e-6);
+
+select('44');
+base=base+gene(10);
+set('x min',(base)*1e-6);
+base=base+gene(9);
+set('x max',(base)*1e-6);
+
+select('55');
+base=base+gene(8);
+set('x min',(base)*1e-6);
+base=base+gene(7);
+set('x max',(base)*1e-6);
+
+base=base+gene(6);
+groupscope('::model');
+select('Siwg2');
+set('x min',(base)*1e-6);
+
+
+
+groupscope('::model');
+groupscope('1');
+for(iii=16:1:25){
+ii=iii-8;
+select(num2str(ii)+num2str(ii));
+set('radiuss',gene(iii)*1e-6);
+}
+groupscope('::model');
+groupscope('2');
+for(iii=16:1:25){
+ii=iii-8;
+select(num2str(ii)+num2str(ii));
+set('radiuss',gene(iii)*1e-6);
+}
+
+
+
+
+#for (iii=1:1:15){
+
+#select(num2str(-iii));
+#set('x',gene(iii)*1e-6);
+#select(num2str(iii));
+#set('x',-gene(iii)*1e-6);
+
+#}
+
+
+#for (iii=16:1:30){
+
+#select(num2str(-(iii-15)));
+#set('radii',gene(iii)*1e-6);
+#select(num2str(iii-15));
+#set('radii',gene(iii)*1e-6);
+#}
+
+#for (iii=31:1:45){
+
+#select(num2str(-(iii-30)));
+#set('seperation',gene(iii)*1e-6);
+#select(num2str(iii-30));
+#set('seperation',-gene(iii)*1e-6);
+#}
+
+#select('Siwgup');
+#set('z min',gene(46)/2*1e-6);
+#select('Siwgdown');
+#set('z max',-gene(46)/2*1e-6);
+
+
+
+#select('sioright');
+#set('x max',-gene(47)*1e-6);
+#select('sioleft');
+#set('x min',gene(47)*1e-6);
+
+
+#select('SiNwg1');
+#set('y max',0.27e-6+gene(48)*1e-6);
+#select('SiNwg2');
+#set('y min',0.27e-6+gene(48)*1e-6+gene(49)*1e-6);
+#set('y max',0.27e-6+gene(48)*2*1e-6+gene(49)*1e-6);
+
+#select('SiNwg1');
+#set('x span',gene(50)*1e-6);
+#set('z span',gene(51)*1e-6);
+#select('SiNwg2');
+#set('x span',gene(50)*1e-6);
+#set('z span',gene(51)*1e-6);

@@ -1,0 +1,312 @@
+
+flag = true;
+for(0;flag==true;0) {
+
+for (iiiii = 351:-1:1) {
+     groupscope("::model");
+# number 1 is the center element
+# number 2  - 26 is the diagonal elements   totol 25
+# number 27 - 51 is the lateral  elements   total 25
+# number 52 - 351 in 300 number 
+
+
+#      352 - 376  is the right lateral elements total 25   (more 25 number added ! )
+#      377 - 676  is the right part elements    total 300   (more 300 number added)
+
+#      more 300number added ! 
+
+
+     groupscope("struct");
+     if (iiiii==1){
+     select("i26j26");
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     }
+     
+     
+     if((iiiii>1)&(iiiii<27)){
+     iii = iiiii-1;
+     
+     name = "i"+num2str(iii)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(iii)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);                
+     }
+     
+     
+     if((iiiii>26)&(iiiii<52)){
+     iii = iiiii-26;
+     
+     name = "i"+num2str(iii)+"j"+num2str(26);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(26)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+           
+#     }     
+
+#     if((iiiii>351)&(iiiii<377)){
+#     iii = iiiii-351;
+   
+     name = "i"+num2str(26)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(26);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);                
+     }        
+
+     
+     
+     if((iiiii>51)&(iiiii<352)){
+     
+        iii = iiiii-51;
+        left = iii;
+        order = 1;
+           for(0;left>order;0) {             
+              left = left- order;
+              order = order+1;
+              }
+        jj = left;
+        ii = order;
+        
+     name = "i"+num2str(ii+1)+"j"+num2str(jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(jj)+"j"+num2str(ii+1);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);      
+     
+     name = "i"+num2str(jj)+"j"+num2str(51-ii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);   
+     
+     name = "i"+num2str(51-ii)+"j"+num2str(jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);        
+
+#     }      
+#     if((iiiii>376)&(iiiii<677)){
+     
+#        iii = iiiii-376;
+#        left = iii;
+#        order = 1;
+#           for(0;left>order;0) {             
+#              left = left- order;
+#              order = order+1;
+#              }
+#        jj = left;
+#        ii = order;  
+     
+     name = "i"+num2str(ii+1)+"j"+num2str(52-jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+
+     name = "i"+num2str(52-jj)+"j"+num2str(ii+1);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);             
+     
+     name = "i"+num2str(52-jj)+"j"+num2str(51-ii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);         
+     
+     name = "i"+num2str(51-ii)+"j"+num2str(52-jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);            
+     }        
+     
+     
+     
+
+     groupscope("::model"); 
+     run;
+     temp =getresult("monitor_1","T");
+     effitemp = temp.T; 
+     ?"iiiii"+(num2str(effitemp)+" "+num2str(efficiency));
+
+     switchtolayout;
+     if(effitemp>efficiency){
+        flag = true;
+        ?"new gene!!";
+        del("backk.fsp");
+        cp("FDTD cross.fsp","backk.fsp");
+        ?effitemp;
+        #gene = genetemp;
+        efficiency = effitemp;
+        
+      }else{
+     
+  #############################    
+  #############################    
+  #############################  
+     groupscope("struct");
+     if (iiiii==1){
+     select("i26j26");
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     }
+     
+     
+     if((iiiii>1)&(iiiii<27)){
+     iii = iiiii-1;
+     
+     name = "i"+num2str(iii)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(iii)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);                
+     }
+     
+     
+     if((iiiii>26)&(iiiii<52)){
+     iii = iiiii-26;
+     
+     name = "i"+num2str(iii)+"j"+num2str(26);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(26)+"j"+num2str(iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+           
+#     }     
+     
+#     if((iiiii>351)&(iiiii<377)){
+#     iii = iiiii-351;
+   
+     name = "i"+num2str(26)+"j"+num2str(52-iii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(52-iii)+"j"+num2str(26);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);                
+     }   
+
+         
+     if((iiiii>51)&(iiiii<352)){
+     
+        iii = iiiii-51;
+        left = iii;
+        order = 1;
+           for(0;left>order;0) {             
+              left = left- order;
+              order = order+1;
+              }
+        jj = left;
+        ii = order;
+        
+     name = "i"+num2str(ii+1)+"j"+num2str(jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+     
+     name = "i"+num2str(jj)+"j"+num2str(ii+1);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);      
+     
+     name = "i"+num2str(jj)+"j"+num2str(51-ii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);   
+     
+     name = "i"+num2str(51-ii)+"j"+num2str(jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);        
+
+#     }   
+#     if((iiiii>376)&(iiiii<677)){    
+#        iii = iiiii-376;
+#        left = iii;
+#        order = 1;
+#           for(0;left>order;0) {             
+#              left = left- order;
+#              order = order+1;
+#              }
+#        jj = left;
+#        ii = order;  
+     
+     name = "i"+num2str(ii+1)+"j"+num2str(52-jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx); 
+
+     name = "i"+num2str(52-jj)+"j"+num2str(ii+1);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);             
+     
+     name = "i"+num2str(52-jj)+"j"+num2str(51-ii);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);         
+     
+     name = "i"+num2str(51-ii)+"j"+num2str(52-jj);
+     select(name);
+     indexx = (str2num(get("index"))-2.21)*(-1)+2.21;  # 转换折射率
+     set("index",indexx);            
+     }  
+     
+     }
+     
+  #############################    
+  #############################    
+  #############################       
+     
+
+
+}
+}
